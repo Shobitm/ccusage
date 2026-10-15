@@ -857,6 +857,7 @@ fn model_name_from_id(model_id: u64) -> String {
         333 | 334 => "claude-4.5-sonnet".to_string(),
         340 | 341 => "claude-4.5-haiku".to_string(),
         342 => "model_openai_gpt_oss_120b_medium".to_string(),
+        1417 => "gemini-4-argon".to_string(),
         1318 => "gemini-3.8-flash-high".to_string(),
         1319 => "gemini-3.8-flash-medium".to_string(),
         1320 => "gemini-3.8-flash-low".to_string(),
@@ -908,6 +909,7 @@ fn normalize_antigravity_model(raw: &str) -> Option<String> {
         "gemini 2.0 pro" => "gemini-2.0-pro",
         "gemini 1.5 flash" => "gemini-1.5-flash",
         "gemini 1.5 pro" => "gemini-1.5-pro",
+        "model_placeholder_m417" => "gemini-4-argon",
         "model_placeholder_m318" => "gemini-3.8-flash-high",
         "model_placeholder_m319" => "gemini-3.8-flash-medium",
         "model_placeholder_m320" => "gemini-3.8-flash-low",
@@ -1489,6 +1491,12 @@ mod tests {
     #[test]
     fn normalizes_newer_gemini_model_placeholders_and_ids() {
         let cases = [
+            (
+                1417,
+                "model_placeholder_m417",
+                "Gemini 4 Argon",
+                "gemini-4-argon",
+            ),
             (
                 1318,
                 "model_placeholder_m318",
